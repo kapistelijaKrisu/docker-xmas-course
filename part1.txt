@@ -23,3 +23,21 @@ FROM ubuntu:16.04
 RUN apt-get update && apt-get install -y curl
 CMD ["/bin/bash"]
 /********************************************/
+
+4.
+docker build -t curler .
+docker run -it curler
+
+/************Dockerfile contents *********/
+FROM ubuntu:16.04 
+RUN apt-get update && apt-get install -y curl
+WORKDIR /mydir 
+COPY curl.sh . 
+RUN chmod a+rx curl.sh
+CMD ["/bin/bash", "curl.sh"]
+/********************************************/
+
+/********** curl.sh contents ************/
+#!bin/bash
+read website; sleep 3; curl http://$website;
+/****************************************/
