@@ -1,0 +1,14 @@
+1
+docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS                          PORTS               NAMES
+bf333c3c6b71        nginx               "nginx -g 'daemon of…"   About a minute ago   Up About a minute               80/tcp              angry_saha
+84dc4b5b304e        nginx               "nginx -g 'daemon of…"   About a minute ago   Exited (0) 55 seconds ago                           nervous_haibt
+f5f601a9268b        nginx               "nginx -g 'daemon of…"   About a minute ago   Exited (0) About a minute ago                       elastic_liskov
+
+2
+docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+docker ps -a
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
+3
