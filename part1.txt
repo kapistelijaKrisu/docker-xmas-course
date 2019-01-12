@@ -78,3 +78,37 @@ EXPOSE 8000
 CMD npm start
 /*************************************/
 
+-----
+
+7. commands remain changes in last line of dockerfiles
+/************Dockerfile front *********/
+FROM ubuntu:16.04 
+RUN apt-get update && apt-get install -y curl 
+
+RUN curl --silent --location https://deb.nodesource.com/setup_10.x | bash -
+RUN apt-get install -y nodejs
+
+WORKDIR /mydir 
+ENV LC_ALL=C.UTF-8 
+COPY frontend-example-docker . 
+RUN npm install
+
+EXPOSE 5000
+CMD API_URL=http://localhost:8000 npm start
+/*************************************/
+/************Dockerfile back *********/
+FROM ubuntu:16.04 
+RUN apt-get update && apt-get install -y curl 
+
+RUN curl --silent --location https://deb.nodesource.com/setup_10.x | bash -
+RUN apt-get install -y nodejs
+
+WORKDIR /mydir 
+ENV LC_ALL=C.UTF-8 
+COPY backend-example-docker . 
+RUN npm install
+
+EXPOSE 8000
+CMD FRONT_URL=http://localhost:5000 npm start
+/*************************************/
+
