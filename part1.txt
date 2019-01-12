@@ -12,3 +12,14 @@ docker ps -a
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
 
 3
+
+sh -c 'read website; sleep 3; curl http://$website;' 
+where $website is parameter for url and 3b is id of image (not full id but unique starting so it is identified)
+
+docker run 3b sh -c 'read website; sleep 3; curl http://helsinki.fi;'
+
+/************Dockerfile contents *********/
+FROM ubuntu:16.04 
+RUN apt-get update && apt-get install -y curl
+CMD ["/bin/bash"]
+/********************************************/
