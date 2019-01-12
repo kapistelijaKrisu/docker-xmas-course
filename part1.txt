@@ -41,3 +41,22 @@ CMD ["/bin/bash", "curl.sh"]
 #!bin/bash
 read website; sleep 3; curl http://$website;
 /****************************************/
+
+5.
+/************Dockerfile contents *********/
+FROM ubuntu:16.04 
+RUN apt-get update && apt-get install -y curl 
+
+RUN curl --silent --location https://deb.nodesource.com/setup_10.x | bash -
+RUN apt-get install -y nodejs
+
+WORKDIR /mydir 
+ENV LC_ALL=C.UTF-8 
+COPY frontend-example-docker . 
+RUN npm install
+
+EXPOSE 5000
+CMD npm start
+/*************************************/
+
+6
