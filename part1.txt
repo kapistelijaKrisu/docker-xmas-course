@@ -78,9 +78,8 @@ EXPOSE 8000
 CMD npm start
 /*************************************/
 
------
-
 7. commands remain changes in last line of dockerfiles
+
 /************Dockerfile front *********/
 FROM ubuntu:16.04 
 RUN apt-get update && apt-get install -y curl 
