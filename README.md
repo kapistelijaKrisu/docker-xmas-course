@@ -28,5 +28,8 @@ build it with simpler tag ``` docker build . -t forum ```
 run container ``` docker run --name le-forum -it -p 3003:3003 --network multi-host-network forum ```
 network name must match
 ##### notes
-database tables aren't initially set up.
-Schema here https://github.com/kapistelijaKrisu/FullstackForum/blob/master/src/config/db_init.js
+database tables aren't initially set up.  
+Schema here https://github.com/kapistelijaKrisu/FullstackForum/blob/master/src/config/db_init.js  
+Alternatively can switch https://github.com/kapistelijaKrisu/FullstackForum/blob/master/src/config/db_init.js line 13 for setting up database and then switching it back to !==  
+Remember to update Dockerfile envirement variables.  
+Frontend is built and thrown to backend as source -> Doesn't need changes and lines 10-12,21-22 can be skipped if there are no changes in frontend.  
