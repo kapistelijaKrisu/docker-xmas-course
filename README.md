@@ -8,9 +8,9 @@ basic ones https://github.com/kapistelijaKrisu/docker-xmas-course/edit/master/pa
 My fall node/react/postgres forum project deployment
 
 ##### step 1 create network  
-´´´ docker network create --subnet 172.20.0.0/16 --ip-range 172.20.240.0/20 multi-host-network ´´´  
+``` docker network create --subnet 172.20.0.0/16 --ip-range 172.20.240.0/20 multi-host-network ```
 ##### step 2 setting up postgres
-´´´ 
+```
 docker pull postgres
 docker run --rm --name pgw -e POSTGRES_PASSWORD=docker -d -p 5432:5432 --network multi-host-network -v $HOME/Desktop/volumes/postgres:/var/lib/postgresql/data postgres
 docker exec -it c5df bash
@@ -18,11 +18,11 @@ root@someid:/# psql -U postgres
 postgres-# CREATE DATABASE forum;
 postgres-# \q
 root@someid:/# exit
-´´´
+```
 ##### step 3 setting up application
 pull image https://cloud.docker.com/repository/docker/kapistelijakrisu/forum-v1/general
-build it with simpler tag ´´´ docker build . -t forum ´´´
-docker run --name le-forum -it -p 3003:3003 --network multi-host-network forum
+build it with simpler tag ``` docker build . -t forum ```
+run container ``` docker run --name le-forum -it -p 3003:3003 --network multi-host-network forum ```
 
 ##### notes
 db tables aren't initially set up
