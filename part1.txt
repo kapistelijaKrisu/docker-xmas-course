@@ -111,3 +111,31 @@ EXPOSE 8000
 CMD FRONT_URL=http://localhost:5000 npm start
 /*************************************/
 
+8
+/************Dockerfile***********/
+FROM ubuntu:16.04 
+
+RUN apt-get update && apt-get install -y curl 
+RUN curl --silent --location https://deb.nodesource.com/setup_8.x | bash -
+RUN apt-get install -y nodejs
+
+WORKDIR /forum/FullstackForum
+COPY FullstackForum .
+
+WORKDIR /forum/forumFront
+ENV LC_ALL=C.UTF-8 
+COPY forumFront .
+
+ENV PORT=3003
+ENV SSL=false
+ENV SECRET=432
+ENV SECRET_MOD='mod:pw1'
+ENV DATABASE_URL='postgres://postgres:docker@172.20.240.2:5432/forum?SSL=false'
+
+
+RUN npm run build
+RUN cp -r build ../FullstackForum/client/
+WORKDIR /forum/FullstackForum
+CMD npm start
+/*****************/
+
